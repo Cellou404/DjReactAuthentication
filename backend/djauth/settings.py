@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'rest_framework_simplejwt',
+    'drf_yasg',
 
     # Internal apps
     'users.apps.UsersConfig',
@@ -160,7 +161,7 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LITETIME': timedelta(days=30),
     'SIGNING_KEY': env('SIGNING_KEY'),
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.token.AccessToken',),
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 
 }
 
@@ -182,3 +183,12 @@ DJOSER = {
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+EMAIL_PORT = env('EMAIL_PORT')
+DOMAIN = env('DOMAIN')
